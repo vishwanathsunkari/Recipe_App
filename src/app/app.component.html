@@ -1,0 +1,11 @@
+<div class="topnav" id="myTopnav">
+        <a [routerLink]="['/']" >
+        <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+        </a>
+        <a [routerLink]="['/editnewrecipe']" style="float:right;">New Recipe</a>
+</div>
+
+<ngx-loading [show]="loading" [config]=""></ngx-loading>
+<div style="margin: 10px">
+<router-outlet></router-outlet>
+</div>

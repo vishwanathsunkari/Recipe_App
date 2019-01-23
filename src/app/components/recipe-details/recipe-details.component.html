@@ -1,0 +1,53 @@
+<p *ngIf="!recipe && !load_error">
+  Loading Recipe..... Please wait a moment!
+</p>
+
+<div *ngIf="load_error">
+  <div class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+    <span class="sr-only">Error:</span>
+    {{error_text}} -
+    <a [routerLink]="['/recipes']">Back To Home Page</a>
+  </div>
+</div>
+
+<div *ngIf="recipe && !error_text" class="recipe panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{recipe.title}}</h3>
+  </div>
+  <div class="panel-body">
+    <div style="float: right">
+      <img src="{{recipe.cover_photo ? 'http://localhost:8080/images/' + recipe.cover_photo : '/assets/empty_bowl.jpg'}}" style="width: 300px; height: 300px; margin: 5px;"/>
+      <div>
+        {{recipe.date_added | date}}
+      </div>
+    
+    </div>
+    <p>{{recipe.description}}</p>
+    <div>
+      <div style="float: left; font-weight: bold; width: 150px;">Preparation Time:</div>
+      <div>{{recipe.preparation_time}}</div>
+      <div style="float: left; font-weight: bold; width: 150px;">Feeds How Many:</div>
+      <div>{{recipe.feeds_this_many}}</div>
+    </div>
+    <div class="ingredients">
+      <h4> Ingredients </h4>
+      <ul>
+        <li *ngFor="let ingredient of recipe.ingredients">
+          {{ingredient.ingredient}} {{ingredient.measure}}
+        </li>
+      </ul>
+    </div>
+    <div class="instructions">
+      <h4> Instructions </h4>
+      <ol>
+        <li *ngFor="let instruction of recipe.instructions">
+          {{instruction.instruction}}
+          
+          <img *ngIf="instruction.photo" src="http://localhost:8080/images/{{instruction.photo}}"   style="width: 100px;border:0; height: 100px; margin: 5px;  object-fit: cover;border-radius: 8px">
+        </li>
+      </ol>
+    </div>
+
+  </div>
+</div>

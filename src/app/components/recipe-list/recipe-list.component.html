@@ -1,0 +1,15 @@
+<h1>
+  These are our Recipes</h1>
+
+<div *ngIf="load_error">
+  <div class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+    <span class="sr-only">Error:</span>
+    {{error_text}} -
+    <a [routerLink]="['/recipes']">Back To Home Page</a>
+  </div>
+</div>
+
+<app-recipe-summary *ngFor="let value of recipes" [recipe]="value" (zoomIn)="zoomInOnRecipe(value)" (userClick)="userClickOnRecipe($event)"></app-recipe-summary>
+
+<div style="clear: both;"></div>

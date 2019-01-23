@@ -1,0 +1,20 @@
+<div class="recipe panel panel-default" style="max-width: 500px; min-width: 500px;" [appHighlightrecipe]="recipe" appHighlightcolor="GreenYellow" (click)="userClicked()">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{recipe.title}}</h3>
+  </div>
+  <div class="panel-body">
+    <div style="float: right">
+      <img src="{{recipe.cover_photo ? 'http://localhost:8080/images/' + recipe.cover_photo : '/assets/empty_bowl.jpg'}}" style="width: 150px; height: 150px; margin: 5px;"
+      />
+    </div>
+    <p>{{recipe.description}}</p>
+    <div>
+      <div style="float: left; font-weight: bold; width: 150px;">Preparation Time:</div>
+      <div>{{recipe.preparation_time}}</div>
+      <div style="float: left; font-weight: bold; width: 150px;">Feeds How Many:</div>
+      <div>{{recipe.feeds_this_many}}</div>
+    </div>
+  </div>
+
+  <div style="font-size: 75%; cursor: pointer; padding: 5px" (click)="zoomInClicked()">Zoom</div>
+</div>
